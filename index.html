@@ -115,6 +115,17 @@ function setup() {
 }
 setup()
 
+function retreat(){
+        var userval = confirm("Do you want to retreat?")
+        if (userval== false)
+        {
+            document.write("Fire at the enemy YEETIAN until ship is destroyed.");
+            draw()
+        }
+        else{
+            document.write("Hope you have another planet you plan on moving to.");
+        }
+    }
 function draw() {
  
   ship.show();
@@ -153,10 +164,18 @@ function draw() {
       firepower.splice(i, 1);
     }
   }
-  alert("insert string")
+  if (yeetlings.length === 0){
+      alert("Congratulations, your planet is saved.")
+  }
+  else{
+      alert("All aliens were not destroyed. " + yeetlings.length.toString() + " Yeetlings left")
+      retreat()
+  }
+ 
 }
 
 function keyReleased(key) {
+    console.log(key)
   if (key != ' ') {
     ship.setDir(0);
   }
@@ -182,18 +201,9 @@ function keyPressed(event) {
   }
 }
 document.addEventListener('keydown', (event) => {keyPressed(event);});
-    function box(){
-        var userval = confirm("Do you accept your mission?")
-        if (userval== true)
-        {
-            document.write("Fire at the enemy YEETIAN until ship is destroyed.");
-        }
-        else{
-            document.write("Hope you have another planet you plan on moving to.");
-        }
-    }
+   
 </script>
-<button onclick= "setup()">Click Here</button>  
+<button onclick= "draw()">Click Here</button>  
 </body>
 </html>
             
