@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width>, initial-scale=1.0">
     <title>Document</title>
+    <!-- Opening text and definition -->
     <script type= "text/javascript">
            
            var x;
@@ -24,16 +25,17 @@
 
     
     <script> 
-     //Our ship
+     //User's Ship: SS Schwarzenegger
 function Ship() {
-    this.x = 2;
+  // positioned in middle at bottom of page
+    this.x = 2; 
     this.xdir = 0;
   
     this.show = function() {
     
      
     };
-  
+  // setting direction of ship movement (left/right)
     this.setDir = function(dir) {
       this.xdir = dir;
     };
@@ -49,18 +51,18 @@ function Ship() {
     this.x = x;
     this.y = y;
     this.r = 30;
-  
+  // r = hull
     this.xdir = 1;
-  
+  // Move one pixel at a time
     this.destroy = function() {
       this.r = this.r - 5;
     };
-  
+  // -5 = amount of damage taken by hit
     this.shiftDown = function() {
       this.xdir *= -1;
       this.y += this.r;
     };
-  
+  // -1 to shift down a pixel 
     this.move = function() {
       this.x = this.x + this.xdir;
     };
@@ -76,13 +78,14 @@ function Ship() {
     this.y = y;
     this.r = 8;
     this.toDelete = false;
-  
+  // moves up 8 pixels at a time
     this.show = function() {
      
     };
   
     this.damage = function() {
       this.toDelete = true;
+      // If it hits the target, then it affects the alien ship (this.toDelete = true)
     };
   
     this.hits = function(yeetling) {
@@ -91,6 +94,7 @@ function Ship() {
         return true;
       } else {
         return false;
+        // Yeetling if hit battle function
     };
   
         }
@@ -119,7 +123,7 @@ function retreat(){
         var userval = confirm("Do you want to retreat?")
         if (userval== false)
         {
-            document.write("Fire at the enemy YEETIAN until ship is destroyed.");
+            // document.write("Fire at the enemy YEETIAN until ship is destroyed.");
             draw()
         }
         else{
@@ -128,10 +132,11 @@ function retreat(){
     }
 function draw() {
     
- 
+//  Canvas Board (Environment)
   ship.show();
   ship.move();
 
+// Laser Function (repeat)
   for (var i = 0; i < firepower.length; i++) {
     firepower[i].show();
     firepower[i].move();
@@ -165,6 +170,7 @@ function draw() {
       firepower.splice(i, 1);
     }
   }
+  // Win or Continue
   if (yeetlings.length === 0){
       alert("Congratulations, your planet is saved.")
   }
